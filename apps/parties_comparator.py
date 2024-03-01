@@ -188,6 +188,7 @@ def app():
     df_sex = df_sex.sort_values(by=['pol party'])
     df_with_selected_pol_parties = df_pol_parties[df_pol_parties['pol party'].isin(
         df_sex['pol party'].unique().tolist())].sort_values(by=['pol party'])
+    
     df_sex['color'] = df_with_selected_pol_parties['color'].tolist()
     df_sex = df_sex.sort_values(by=['sex_female'], ascending=False).reset_index(drop=True)
 
