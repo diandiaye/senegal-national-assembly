@@ -1,0 +1,100 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Base Python devcontainer",
+	"build": {
+		"dockerfile": "./Dockerfile",
+		"context": "."
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"files.eol": "\n",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "bash",
+						"icon": "terminal-bash"
+					}
+				},
+				"python.pythonPath": "./server/.venv/bin/python",
+				"python.defaultInterpreterPath": "./server/.venv/bin/python",
+				"python.formatting.blackPath": "./server/.venv/bin/black",
+				"ruff.path": [
+					"./server/.venv/bin/ruff"
+				],
+				"ruff.enable": true,
+				"python.testing.pytestPath": "./server/.venv/bin/pytest",
+				"python.testing.pytestEnabled": true,
+				"python.languageServer": "Pylance",
+				"python.testing.unittestEnabled": false,
+				"python.testing.autoTestDiscoverOnSaveEnabled": false,
+				"python.formatting.provider": "none",
+				"python.showStartPage": false,
+				"editor.formatOnSave": true,
+				"editor.suggestSelection": "first",
+				"editor.bracketPairColorization.enabled": true,
+				"editor.guides.bracketPairs": true,
+				"git.confirmSync": false,
+				"git.enableSmartCommit": true,
+				"telemetry.telemetryLevel": "off",
+				"rest-client.enableTelemetry": false,
+				"telemetry.enableTelemetry": false,
+				"cSpell.allowCompoundWords": true,
+				"cSpell.language": "en",
+				"cSpell.userWords": [
+					"numpy",
+					"pydantic",
+					"openpyxl",
+					"isort",
+					"mypy",
+					"Pylance",
+					"pylint",
+					"pytest",
+					"venv",
+					"Mauss",
+					"pyspark",
+					"adpyke",
+					"toolsai",
+					"Gruntfuggly",
+					"mhutchie",
+					"davidanson",
+					"jebbs",
+					"plantuml",
+					"doxdocgen",
+					"myml",
+					"njpwerner",
+					"mechatroner",
+					"visualstudioexptteam",
+					"vscodeintellicode",
+					"pandera",
+					"iterrows",
+					"pyarrow"
+				]
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-vscode.makefile-tools",
+				"visualstudioexptteam.vscodeintellicode",
+				"adpyke.vscode-sql-formatter",
+				"huggingface.huggingface-vscode",
+				"mhutchie.git-graph",
+				"streetsidesoftware.code-spell-checker",
+				"charliermarsh.ruff",
+				"ms-toolsai.datawrangler",
+				"njpwerner.autodocstring",
+				"mechatroner.rainbow-csv"
+			]
+		}
+	},
+	"waitFor": "postStartCommand",
+	"onCreateCommand": "bash .devcontainer/initialize-environment.sh",
+	// "postStartCommand": "poetry run pre-commit install",
+	"remoteUser": "vscode"
+}
